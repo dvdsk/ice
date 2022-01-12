@@ -2,9 +2,5 @@
 
 members = [
 	"client",
-	"localjava",
+	"lib",
 ]
-
-# [profile.deployed]
-# inherits = "dev"
-# opt-level = 3

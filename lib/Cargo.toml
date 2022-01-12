@@ -1,5 +1,5 @@
 [package]
-name = "localjava"
+name = "lib"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 futures = "0.3.19"
-futures-util = "0.3.19"

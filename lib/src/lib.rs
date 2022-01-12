@@ -1,15 +1,15 @@
 use futures::{stream, StreamExt, TryStream, TryStreamExt};
 
 #[derive(Debug)]
-pub enum Error {
+pub enum E {
     Empty,
 }
 
-pub async fn download_stream() -> Result<impl TryStream<Ok = Progress, Error = Error>, Error> {
+pub async fn download_stream() -> Result<impl TryStream<Ok = P, Error = E>, E> {
     Ok(unpack_stream().await.unwrap())
 }
 
-pub async fn unpack_stream() -> Result<impl TryStream<Ok = Progress, Error = Error>, Error> {
+pub async fn unpack_stream() -> Result<impl TryStream<Ok = P, Error = E>, E> {
     let state = Download {};
 
     let stream = stream::try_unfold(state, state_machine);
@@ -21,10 +21,10 @@ pub async fn unpack_stream() -> Result<impl TryStream<Ok = Progress, Error = Err
     Ok(stream.into_stream().boxed())
 }
 
-async fn state_machine(_state: Download) -> Result<Option<(Progress, Download)>, Error> {
+async fn state_machine(_state: Download) -> Result<Option<(P, Download)>, E> {
     Ok(None)
 }
 
 #[derive(Clone)]
-pub struct Progress;
+pub struct P;
 struct Download {}
