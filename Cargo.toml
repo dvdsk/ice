@@ -1,0 +1,10 @@
+[workspace]
+
+members = [
+	"client",
+	"localjava",
+]
+
+# [profile.deployed]
+# inherits = "dev"
+# opt-level = 3
